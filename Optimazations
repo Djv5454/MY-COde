@@ -1,0 +1,27 @@
+# Import the necessary libraries
+import numpy as np
+
+# Define the objective function
+def objective_function(x):
+    return x**2 + 5*x + 4
+
+# Define the constraints
+def constraints(x):
+    return x**3 - 2*x - 5
+
+# Define the optimization problem
+def optimization_problem(objective_function, constraints):
+    # Initialize the variables
+    x = np.zeros(2)
+
+    # Set the constraints
+    c = ({'type': 'eq', 'fun': constraints})
+
+    # Solve the optimization problem
+    result = minimize(objective_function, x, constraints=c)
+
+    # Return the optimal value
+    return result.x
+
+# Print the optimal value
+print(optimization_problem(objective_function, constraints))
